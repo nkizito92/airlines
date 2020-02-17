@@ -7,6 +7,6 @@ class AirlinesController < ApplicationController
 
     def show 
         # display flights in this airline
-        @airline = Airline.find_by_id[params[:id]] 
+        @airline = Airline.find_by_id([params[:id]])
     end
 end
