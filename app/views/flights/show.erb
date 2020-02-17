@@ -1,4 +1,7 @@
-<h1><%= # Airline name, location, and destination %></h1>
+<h1> <%= @flight.airline.name %></h1>
+<h1><%= @flight.title %></h1>
 <div>
-    <%= @flight.title %> - <%= @flight.departure %> - <%= @flight.arrival %>
+    Departure: <%= @flight.departure %> <br>
+    Arrival: <%= @flight.arrival %> <br>
+    Destination: <%= @flight.airline.destination %>
 </div>

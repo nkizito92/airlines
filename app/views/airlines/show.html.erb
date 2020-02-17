@@ -1,0 +1,21 @@
+<h1>  
+<%= @airline.name %>
+</h1>
+
+<h3><%= @airline.address %></h3>
+
+<ul>
+<%= @airline.flights.each do |flight| %>
+  <li>
+    <%= flight.title %> <br> 
+    Departure: <%= flight.departure %> <br>
+    Arrival: <%= flight.arrival %> <br>
+    <%= link_to 'view flight', airline_flight_path(@airline ,flight.id) %><br> <br>
+  </li>
+
+
+<% end %>
+</ul>
+
+<h3> Your destination</h3>
+    <%= @airline.destination %>
