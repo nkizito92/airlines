@@ -42,7 +42,6 @@ Use Ctrl-C to stop
  
 ```
 You need to see `localhost:3000` this is what you'll need to copy and paste in your desired internet browser. 
-
 ### Congrates You've Done It!!!
 
 
