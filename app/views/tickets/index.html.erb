@@ -1,0 +1,10 @@
+<ul>
+    <%= @tickets.each do |ticket| %>
+        <h3>Plane: <%= ticket.flight.title %></h3>
+        <li>
+            Ticket Number: <%= ticket.ticket_num %> -
+            Seat Number: <%= ticket.seat_num %> -
+            Price: $<%= ticket.price %>
+        </li>
+    <% end %>
+</ul>
