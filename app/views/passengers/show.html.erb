@@ -1,0 +1,13 @@
+<h1>
+    <%= @passenger.full_name %>
+</h1> 
+
+<%= @passenger.age %>
+
+<h2> <%= @passenger.full_name %> Tickets:</h2>
+
+<%= @passenger.tickets.each do |tic| %>
+    <%= tic.ticket_num %>
+    <%= tic.price %>
+
+<% end %>

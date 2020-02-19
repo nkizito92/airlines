@@ -7,3 +7,4 @@
          <%= pluralize(airline.flights.size, 'flight') %> 
 <% end %>
 </ul>
+     <%= link_to "logout #{@user.username}?", logout_path %>

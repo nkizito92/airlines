@@ -1,3 +1,5 @@
+<%# Ticket needs to exist already%>
+
 <%= form_for @ticket do |f| %>
     <%= f.label :ticket_num %> <br>
     <%= f.text_field :ticket_num %> <br>
@@ -5,7 +7,6 @@
     <%# Some seat will be taken %>
     <%= f.number_field :seat_num %><br> <br>
     <%= f.collection_select(:flight_id, Flight.all, :id, :title, {prompt: "Choose Flight"}) %> <br> <br>
-    <%= f.collection_select(:passenger_id, Passenger.all, :id, :first_name, {prompt: "Choose passenger"}) %> <br> <br>
     <%= f.label :price %> <br>
     <%= f.number_field :price %> <br>
     <%= f.submit "Buy Ticket" %>
