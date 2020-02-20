@@ -5,12 +5,22 @@
 <h3><%= @airline.address %></h3>
 
 <ul>
-<%= @airline.flights.each do |flight| %>
+<% @airline.flights.each do |flight| %>
   <li>
     <%= flight.title %> <br> 
     Departure: <%= flight.departure %> <br>
-    Arrival: <%= flight.arrival %> <br>
+    Arrival: <%= flight.arrival %> <br><br>
     <%= link_to 'view flight', airline_flight_path(@airline ,flight.id) %><br> <br>
+   <h1> Tickets: </h1>  
+    <table border="1" > 
+      <% flight.tickets.each  do |ticket| %>
+        <th> Ticket Number </th> <th>Seat Number</th>
+        <tr align="center">
+           <td><%= link_to ticket.ticket_num, ticket_path(ticket) %> </td>
+           <td><%= ticket.seat_num %></td>
+        </tr>
+      <% end %>
+    </table>
   </li>
 <% end %>
 </ul>

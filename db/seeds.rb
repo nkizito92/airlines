@@ -11,6 +11,8 @@
     austin_tic = Ticket.new(ticket_num: "$44654", seat_num: 3, price: 60)
     houston_tic = Ticket.new(ticket_num: "$444", seat_num: 8, price: 100)
     h_round_trip = Ticket.new(ticket_num: "$445687", seat_num: 4, price: 300)
+    round_trip = Ticket.new(ticket_num: "$445AA7", seat_num: 5, price: 300)
+    round_tripB = Ticket.new(ticket_num: "$4457", seat_num: 4, price: 300)
     
     jone = Passenger.create(full_name: "Jone James", age: 15)
 
@@ -23,6 +25,8 @@
     houston_tic.flight = flight_h2
     h_round_trip.flight = flight_o1
 
+    flight_o1.tickets << round_trip 
+    flight_o1.tickets << round_tripB
     # one tickect has a passenger
     austin_tic.passenger = jone 
     austin_tic.save

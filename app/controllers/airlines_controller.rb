@@ -3,7 +3,6 @@ class AirlinesController < ApplicationController
     def index 
         # displays airlines to choose from
         redirect_if_not_login
-        @user = current_user
         @airlines = Airline.all
     end 
 

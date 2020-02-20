@@ -1,10 +1,9 @@
 <h1> Airlines HomePage</h1>
 <ul>
-<%= @airlines.each do |airline| %>
+<% @airlines.each do |airline| %>
    <h2><%= airline.name %></h2>
    <li><%= airline.address %> - <%= airline.destination %> </li>
    <span> <%=link_to 'View Airline', airline_path(airline) %></span> <br>
-         <%= pluralize(airline.flights.size, 'flight') %> 
+         <%= pluralize(airline.flights.count, 'flight') %> 
 <% end %>
 </ul>
-     <%= link_to "logout #{@user.username}?", logout_path %>

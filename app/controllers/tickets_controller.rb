@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 
-    before_action :set_params, only: [:show, :edit, :destroy, :update]
+    before_action :sets_params, only: [:show, :edit, :destroy, :update]
 
     def index 
         @tickets = Ticket.all

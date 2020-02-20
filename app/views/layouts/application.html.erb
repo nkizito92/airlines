@@ -5,7 +5,10 @@
     
   </head>
 
-  <body>
+  <body>  
+    <% if logged_in? %>
+      <%= link_to "logout #{current_user.username}?", logout_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
