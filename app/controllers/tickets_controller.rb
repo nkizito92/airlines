@@ -23,12 +23,19 @@ class TicketsController < ApplicationController
 
     def edit 
         # choose different time for the same ticket
+        @ticket = Ticket.find_by_id(params[:id])
     end 
 
     def update 
         # updates ticket
-        @ticket.update(seat_num: params[:seat_num])
-        @ticket.save
+        @ticket = Ticket.find_by_id(params[:id])
+        if current_user.id != @ticket.passenger.user_id
+            redirect_to airlines_path
+        else
+            @ticket.update(passenger_id: params[:ticket][:passenger_id])
+            @ticket.save
+            redirect_to root_path
+        end
     end
 
     def destroy

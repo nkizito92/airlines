@@ -3,7 +3,6 @@
     <%= f.text_field :full_name %> <br>
     <%= f.label :age %> <br>
     <%= f.number_field :age %> <br>
-    <%= f.collection_select :tickets, Ticket.all, :id, :ticket_num, {prompt: "Choose ticket"} %> <br>
 
     <%= f.submit "Create Passenger" %>
 <% end %>

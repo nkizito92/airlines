@@ -10,30 +10,33 @@ class PassengersController < ApplicationController
     end
 
     def create
-        # adding the flight to 
-        # needs fixing
-        @passenger = Passenger.create(full_name: params[:passenger][:full_name], age: params[:passenger][:age])
-        @ticket = Ticket.find_by_id(params[:passenger][:tickets])
-        @passenger.tickets << @ticket
+        @passenger = Passenger.create(passenger_params)
+        @passenger.user_id = current_user.id
         @passenger.save
         redirect_to passenger_path(@passenger)
     end
 
     def edit
         # edit the flight and choose a different one
+        @passenger = Passenger.find_by_id(params[:id])
     end
 
     def update
+        @passenger = Passenger.find_by_id(params[:id])
         # update flight
     end
 
     def destroy
-        # remove the flight for this passanger
+        @passenger = Passenger.find_by_id(params[:id])
+        if current_user.id == @passenger.user_id
+            @passenger.delete_all
+        end
+        redirect_to root_path
     end
 
     private
 
     def passenger_params
-        params.require(:passenger).permit(:full_name, :age, :tickets)
+        params.require(:passenger).permit(:full_name, :age)
     end
 end

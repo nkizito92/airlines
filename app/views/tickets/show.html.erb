@@ -6,3 +6,8 @@
 <h2>Seat Number: <%= @ticket.seat_num %></h2>
 
 <h3>Price: $<%= @ticket.price %></h2>
+<% if @ticket.passenger.nil? %>
+    <%= link_to "Purchase Ticket", edit_ticket_path %>
+<% else %>
+    <h3><%= @ticket.passenger.full_name %> owns this ticket.</h3>
+<% end %>

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     protect_from_forgery
+
+    before_action :redirect_if_logged_in, only: [:login, :new]
     
     def index 
         redirect_if_not_login
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
         @user = User.find_by(username: params[:username])
        if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect_to root_path
+            create_passenger_if_none_redirect
        else 
             redirect_to login_path
        end
@@ -27,17 +29,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         return redirect_to signup_path unless @user.save
         session[:user_id] = @user.id 
-        redirect_to root_path
-        # @new_user = User.new(username: params[:username], password: params[:password])
-        # @old_user = User.all.find_by(username: params[:username])
-        # if @new_user.valid? && !@old_user
-        #     @new_user.username = params[:username].downcase
-        #     @new_user.save
-        #     session[:user_id] = @new_user.id
-        #     redirect_to root_path
-        # else 
-        #     redirect_to signup_path
-        # end
+        create_passenger_if_none_redirect
     end
 
     def destroy 
@@ -46,6 +38,14 @@ class UsersController < ApplicationController
     end
 
     private 
+
+    def create_passenger_if_none_redirect
+        if @user.passengers.empty? 
+            redirect_to new_passenger_url
+        else
+            redirect_to root_path
+        end
+    end
 
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation)

@@ -1,6 +1,7 @@
 class Passenger < ActiveRecord::Base
     has_many :tickets
     has_many :flights, through: :tickets
+    belongs_to :user
 
     def tickets_attrs=(tickets_attrs)
         tickets_attrs.values.each do |ticket_attr|

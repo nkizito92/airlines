@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2020_02_17_151819) do
     t.integer "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "seats"
   end
 
   create_table "tickets", force: :cascade do |t|

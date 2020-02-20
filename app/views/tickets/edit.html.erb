@@ -1,0 +1,6 @@
+<h1>Ticket: <%= @ticket.ticket_num %></h1>
+<%= form_for @ticket do |f| %>
+    <%=f.label "Passenger"  %> <br>
+    <%=f.collection_select(:passenger_id, current_user.passengers, :id, :full_name, {prompt: "Please select passenger"})  %> <br>
+    <%= f.submit "Buy Ticket" %>
+<% end %>
