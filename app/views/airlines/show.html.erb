@@ -7,20 +7,22 @@
 <ul>
 <% @airline.flights.each do |flight| %>
   <li>
-    <%= flight.title %> <br> 
+  <h2><%= flight.title.capitalize %> <br></h2>
     Departure: <%= flight.departure %> <br>
     Arrival: <%= flight.arrival %> <br><br>
     <%= link_to 'view flight', airline_flight_path(@airline ,flight.id) %><br> <br>
-   <h1> Tickets: </h1>  
-    <table border="1" > 
-      <% flight.tickets.each  do |ticket| %>
-        <th> Ticket Number </th> <th>Seat Number</th>
-        <tr align="center">
-           <td><%= link_to ticket.ticket_num, ticket_path(ticket) %> </td>
-           <td><%= ticket.seat_num %></td>
-        </tr>
-      <% end %>
-    </table>
+    <% if !flight.tickets.empty? %>
+      <h1> Tickets: </h1>  
+        <table border="1" > 
+          <% flight.tickets.each  do |ticket| %>
+            <th> Ticket Number </th> <th>Seat Number</th>
+            <tr align="center">
+              <td><%= link_to ticket.ticket_num, ticket_path(ticket) %> </td>
+              <td><%= ticket.seat_num %></td>
+            </tr>
+          <% end %>
+        </table> <br><br>
+    <% end %>
   </li>
 <% end %>
 </ul>

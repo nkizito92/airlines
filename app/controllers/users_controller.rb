@@ -17,7 +17,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             create_passenger_if_none_redirect
        else 
-            redirect_to login_path
+            redirect_to login_path, alert: "Invalid login"
        end
     end
     
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
     def create_passenger_if_none_redirect
         if @user.passengers.empty? 
-            redirect_to new_passenger_url
+            redirect_to new_passenger_url, alert: "Please create a passenger."
         else
             redirect_to root_path
         end

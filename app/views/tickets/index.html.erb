@@ -1,6 +1,10 @@
 <ul>
-    <%= @tickets.each do |ticket| %>
+    <% @tickets.each do |ticket| %>
+        <% if ticket.flight.nil? %>
+          <h2> Ticket <%= ticket.ticket_num %> has no Flight</h2>
+        <% else %>
         <h3>Plane: <%= ticket.flight.title %></h3>
+        <% end %>
         <li>
             Ticket Number: <%= ticket.ticket_num %> -
             Seat Number: <%= ticket.seat_num %> -

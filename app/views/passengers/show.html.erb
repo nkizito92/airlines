@@ -5,8 +5,8 @@
 <%= @passenger.age %>
 
 <% if !@passenger.tickets.empty? %>
-<h2> <%= @passenger.full_name %>Plane Tickets:</h2>
-    <%= @passenger.tickets.each do |tic| %>
+<h2> <%= @passenger.full_name %>'s Plane Tickets:</h2>
+    <% @passenger.tickets.each do |tic| %>
         <%= tic.ticket_num %>
         <%= tic.price %>
 

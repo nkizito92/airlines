@@ -1,12 +1,7 @@
 class Passenger < ActiveRecord::Base
+    validates :full_name, :age, presence: true
     has_many :tickets
     has_many :flights, through: :tickets
     belongs_to :user
 
-    def tickets_attrs=(tickets_attrs)
-        tickets_attrs.values.each do |ticket_attr|
-            ticket = Ticket.find_or_create_by(ticket_attr)
-            self.tickets << ticket
-        end
-    end
 end

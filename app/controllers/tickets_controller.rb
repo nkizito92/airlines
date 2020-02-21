@@ -17,8 +17,10 @@ class TicketsController < ApplicationController
 
     def create 
         # add ticket to passanger
+        @flight = Flight.find_by_id(params[:ticket][:flight_id])
         @ticket = Ticket.new(params_pair)
-        @ticket.save
+        @flight.tickets << @ticket
+        redirect_to ticket_path(@ticket)
     end 
 
     def edit 
@@ -29,18 +31,21 @@ class TicketsController < ApplicationController
     def update 
         # updates ticket
         @ticket = Ticket.find_by_id(params[:id])
-        if current_user.id != @ticket.passenger.user_id
-            redirect_to airlines_path
-        else
+        if @ticket.passenger.nil? 
             @ticket.update(passenger_id: params[:ticket][:passenger_id])
             @ticket.save
             redirect_to root_path
+        elsif current_user.id != @ticket.passenger.user_id 
+            redirect_to airlines_path
         end
     end
 
     def destroy
         # remove ticket or cancel it
-        @ticket.delete_all
+        @ticket.passenger_id = nil
+        @ticket.save
+        # this part is only for admin
+        # @ticket.delete_all
     end
 
     private 

@@ -4,3 +4,12 @@
     <%=f.collection_select(:passenger_id, current_user.passengers, :id, :full_name, {prompt: "Please select passenger"})  %> <br>
     <%= f.submit "Buy Ticket" %>
 <% end %>
+<% if @ticket.passenger.nil? %>
+    <h3>You don't own this ticket</h3>
+<% elsif current_user.id !=  @ticket.passenger.user_id  %>
+    <h3> What are you doing?</h3>
+<% else %>
+    <%= form_for @ticket, method: :delete do |f| %>
+    <%= f.submit 'Remove Passenger'%>
+    <% end %>
+<% end %>
