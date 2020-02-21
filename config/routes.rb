@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "airlines#index"
 
+  get 'auth/facebook/callback' => 'sessions#create'
+
   # users routes
   #admin user
   get '/account' => 'users#index'
