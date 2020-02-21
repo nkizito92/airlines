@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root "airlines#index"
 
   # users routes
+  #admin user
   get '/account' => 'users#index'
+  # regular users
   get '/login', to: 'users#login'
   post '/login', to: 'users#loggedin'
   get '/signup', to: 'users#new'
