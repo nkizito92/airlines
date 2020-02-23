@@ -1,4 +1,9 @@
 class PassengersController < ApplicationController
+    def index 
+        binding.pry
+        @passengers = current_user.passengers
+    end 
+
     def show
         # shows the flight the passenger chose through ticket
         @passenger = Passenger.find_by_id(params[:id])
@@ -10,10 +15,13 @@ class PassengersController < ApplicationController
     end
 
     def create
-        @passenger = Passenger.create(passenger_params)
-        @passenger.user_id = current_user.id
-        @passenger.save
-        redirect_to passenger_path(@passenger)
+        @passenger = current_user.passengers.build(passenger_params)
+
+        if @passenger.save
+            redirect_to_index_if_passengers(@passenger)
+        else 
+            render :new 
+        end
     end
 
     def edit
@@ -23,6 +31,7 @@ class PassengersController < ApplicationController
 
     def update
         @passenger = Passenger.find_by_id(params[:id])
+        @passenger.update(passenger_params)
         # update flight
     end
 
@@ -34,9 +43,18 @@ class PassengersController < ApplicationController
         redirect_to root_path
     end
 
-    private
+private
+
+    def redirect_to_index_if_passengers(passenger)
+        
+        if current_user.passengers[1].nil?
+            redirect_to passenger_path(passenger)
+        else 
+            redirect_to passengers_path
+        end 
+    end 
 
     def passenger_params
-        params.require(:passenger).permit(:full_name, :age)
+        params.require(:passenger).permit(:full_name, :age, :user_id)
     end
 end

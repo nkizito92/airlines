@@ -1,3 +1,23 @@
 <% @flights.each do |flight| %>
     <div><%= flight.title %> - <%= flight.departure %> - <%= flight.arrival %></div> <br>
+
+    <div>
+    <table>
+        <% flight.tickets.each do |ticket| %>
+        <th>Ticket Number</th> <th>Price</th> <th>Seat</th> <th>Purchased</th>
+        <tr>
+            <td><%= ticket.ticket_num %></td>
+            <td> <%= ticket.price %></td>
+            <td><%= ticket.seat_num %></td>
+            <td>  
+                <% if ticket.passenger.nil? %>
+                    <%= link_to 'Buy ticket', edit_ticket_path(ticket) %>
+                <% else %>
+                    purchased
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</div>
 <% end %>

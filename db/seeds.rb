@@ -12,6 +12,7 @@
     h_round_trip = Ticket.new(ticket_num: "$445687", seat_num: 4, price: 300)
     round_trip = Ticket.new(ticket_num: "$445AA7", seat_num: 5, price: 300)
     round_tripB = Ticket.new(ticket_num: "$4457", seat_num: 4, price: 300)
+    round_tripO2 = Ticket.new(ticket_num: "$4457-o2", seat_num: 4, price: 800)
     
     flight_h = Flight.new(title: "flightA", departure: "10:45AM", arrival: "11:25AM")
     flight_h2 = Flight.new(title: "flightB", departure: "12:45AM", arrival: "2:25PM")
@@ -25,7 +26,8 @@
     flight_o1.tickets << round_trip 
     flight_o1.tickets << round_tripB
     flight_h.tickets << h_round_trip
-
+    
+    flight_o2.tickets << round_tripO2
     flight_h.airline = hobby 
     flight_h.save
     flight_o1.airline = ohio

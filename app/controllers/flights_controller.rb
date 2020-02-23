@@ -2,7 +2,7 @@ class FlightsController < ApplicationController
 
     def index
         # shows a list of different flights
-        @flights = Flight.all
+        @flights = Airline.find_by_id(params[:airline_id]).flights
     end 
 
     def show

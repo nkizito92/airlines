@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
 
     def create 
         # add ticket to passanger
-        @flight = Flight.find_by_id(params[:ticket][:flight_id])
+        @flight = Flight.find_by_id(params_pair[:flight_id])
         @ticket = Ticket.new(params_pair)
         @flight.tickets << @ticket
         redirect_to ticket_path(@ticket)
@@ -55,6 +55,6 @@ class TicketsController < ApplicationController
     end 
 
     def params_pair
-        params.require(:ticket).permit(:ticket_num, :seat_num, :price)
+        params.require(:ticket).permit(:ticket_num, :seat_num, :price, :flight_id)
     end 
 end

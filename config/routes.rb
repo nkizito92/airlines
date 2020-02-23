@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "airlines#index"
 
-  get 'auth/facebook/callback' => 'sessions#create'
+  get 'auth/facebook/callback' => 'sessions#create' 
 
   # users routes
   #admin user
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :airlines, only: [:index, :show] do 
    resources :flights, only: [:index, :show]
 end
-  resources :passengers, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :passengers, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :tickets, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
