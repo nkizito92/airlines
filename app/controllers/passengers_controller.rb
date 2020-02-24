@@ -1,6 +1,5 @@
 class PassengersController < ApplicationController
     def index 
-        binding.pry
         @passengers = current_user.passengers
     end 
 

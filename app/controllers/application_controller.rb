@@ -18,4 +18,12 @@ class ApplicationController < ActionController::Base
     def redirect_if_logged_in
         redirect_to root_path unless !logged_in?
     end
+
+    def create_passenger_if_none_redirect
+        if @user.passengers.empty? 
+            redirect_to new_passenger_url, alert: "Please create a passenger."
+        else
+            redirect_to root_path
+        end
+    end
 end

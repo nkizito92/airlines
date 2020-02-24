@@ -5,14 +5,12 @@ class SessionsController < ApplicationController
 
         # session[:name] = request.env['omniauth.auth']['info']['name']
         # session[:omniauth_data] = request.env['omniauth.auth']
-        @user = User.find_or_create_by(username: auth['info']['name']) do |u|
+        @user = User.find_or_create_by(uid: auth[:uid]) do |u|
             u.username = auth['info']['name']
-          end
-          binding.pry
-       
+            u.password = SecureRandom.hex
+        end
           session[:user_id] = @user.id
-          
-          render 'airlines/index'
+          create_passenger_if_none_redirect
     end 
 
 private

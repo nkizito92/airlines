@@ -39,13 +39,7 @@ class UsersController < ApplicationController
 
     private 
 
-    def create_passenger_if_none_redirect
-        if @user.passengers.empty? 
-            redirect_to new_passenger_url, alert: "Please create a passenger."
-        else
-            redirect_to root_path
-        end
-    end
+   
 
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation)
