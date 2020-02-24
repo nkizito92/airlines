@@ -1,12 +1,17 @@
 <%# This is only for Admin %>
+<h2> New Ticket for: <%= @tickets_flight.title %> </h2>
 <%= form_for @ticket do |f| %>
     <%= f.label :ticket_num %> <br>
     <%= f.text_field :ticket_num %> <br>
     <%= f.label :seat_num %> <br>
     <%# Some seat will be taken %>
     <%= f.number_field :seat_num %><br> <br>
-    <%= f.collection_select(:flight_id, Flight.all, :id, :title, {prompt: "Choose Flight"}) %> <br> <br>
+        <% if @tickets_flight.nil? %>
+            <%= f.collection_select(:flight_id, Flight.all, :id, :title, {prompt: "Choose Flight"}) %> <br> <br>
+        <% else %>
+           <%= f.hidden_field :flight_id %> 
+        <% end %>
     <%= f.label :price %> <br>
     <%= f.number_field :price %> <br>
-    <%= f.submit "Buy Ticket" %>
+    <%= f.submit %>
 <% end %>

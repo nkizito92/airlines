@@ -45,7 +45,6 @@ class PassengersController < ApplicationController
 private
 
     def redirect_to_index_if_passengers(passenger)
-        
         if current_user.passengers[1].nil?
             redirect_to passenger_path(passenger)
         else 

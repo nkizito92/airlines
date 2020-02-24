@@ -6,7 +6,7 @@
 <% @airline.flights.each do |flight| %>
   <li>
   <h2><%= flight.title.capitalize %> - Departure: <%= flight.departure %> - Arrival: <%= flight.arrival %> </h2> <br><br>
-    <%= link_to 'view flight', airline_flight_path(@airline ,flight.id) %><br> <br>
+    <%= link_to 'view flight', airline_flight_path(@airline, flight.id) %><br> <br>
     <% if !flight.tickets.empty? %>
       <h1> Tickets: </h1>  
         <table border="1" > 

@@ -11,7 +11,7 @@
             <td><%= ticket.seat_num %></td>
             <td>  
                 <% if ticket.passenger.nil? %>
-                    <%= link_to 'Buy ticket', edit_ticket_path(ticket) %>
+                    <%= link_to 'Buy ticket', buy_ticket_path(ticket) %>
                 <% else %>
                     purchased
                 <% end %>

@@ -10,17 +10,31 @@ class TicketsController < ApplicationController
         # show the ticket, with seat_num, flight, and passanger 
     end 
 
+    def expensive 
+        @tickets = Ticket.order(price: :desc).first
+        render :index
+    end 
+
+    def cheapest
+        @tickets = Ticket.order(price: :asc).first
+        render :index
+    end
+
     def new 
         # buy a ticket with that has a specific time 
-        @ticket = Ticket.new
+        @tickets_flight = Flight.find_by_id(params[:flight_id])
+        @ticket = Ticket.new(flight_id: params[:flight_id])
     end 
 
     def create 
-        # add ticket to passanger
-        @flight = Flight.find_by_id(params_pair[:flight_id])
+        # I was getting unpermit for flight so params[:ticket][:flight][:title]
+        # @flight = Flight.find_by(title: params[:ticket][:flight][:title])
         @ticket = Ticket.new(params_pair)
-        @flight.tickets << @ticket
+        if @ticket.save
         redirect_to ticket_path(@ticket)
+        else 
+            render :new
+        end
     end 
 
     def edit 
@@ -55,6 +69,7 @@ class TicketsController < ApplicationController
     end 
 
     def params_pair
+        # Tickets doesn't include flight in its attributes so :flight_id
         params.require(:ticket).permit(:ticket_num, :seat_num, :price, :flight_id)
     end 
 end

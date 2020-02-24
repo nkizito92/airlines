@@ -1,14 +1,33 @@
 <ul>
-    <% @tickets.each do |ticket| %>
-        <% if ticket.flight.nil? %>
-          <h2> Ticket <%= ticket.ticket_num %> has no Flight</h2>
-        <% else %>
-        <h3>Plane: <%= ticket.flight.title %></h3>
+<% if !@tickets[1].nil? %>
+        <% @tickets.each do |ticket| %>
+            <% if ticket.flight.nil? %>
+            <h2> Ticket <%= ticket.ticket_num %> has no Flight</h2>
+            <% else %>
+            <h3>Plane: <%= ticket.flight.title %></h3>
+            <% end %>
+            <li>
+                Ticket Number: <%= ticket.ticket_num %> -
+                Seat Number: <%= ticket.seat_num %> -
+                Price: $<%= ticket.price %>
+            </li>
         <% end %>
-        <li>
-            Ticket Number: <%= ticket.ticket_num %> -
-            Seat Number: <%= ticket.seat_num %> -
-            Price: $<%= ticket.price %>
-        </li>
+    <%= link_to 'Cheapest tickets', cheapest_path %>
+    <%= link_to 'Expensive tickets', expensive_path %>
+    <% else %>
+
+
+        <% if @tickets.flight.nil? %>
+            <h2> Ticket <%= @tickets.ticket_num %> has no Flight</h2>
+        <% else %>
+        <h3>Plane: <%= @tickets.flight.title %></h3>
+        <% end %>
+            <li>
+                Ticket Number: <%= @tickets.ticket_num %> -
+                Seat Number: <%= @tickets.seat_num %> -
+                Price: $<%= @tickets.price %>
+            </li>
+    <%= link_to 'tickets', tickets_path %>
     <% end %>
+
 </ul>

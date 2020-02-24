@@ -1,8 +1,7 @@
-<% form_for @passenger do |f| %>
+<%= form_for @passenger do |f| %>
     <%= f.label :full_name %> <br>
     <%= f.text_field :full_name %> <br>
     <%= f.label :age %> <br>
     <%= f.number_field :age %> <br>
-
-
-<% yield %>
+    <%= f.submit %>
+<% end %>
