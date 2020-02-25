@@ -13,11 +13,14 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/logout', to: 'users#destroy'
 
-  # tickets
-
+  # tickets routes 
   get '/tickets/cheapest', to: 'tickets#cheapest', as: 'cheapest'
   get '/tickets/expensive', to: 'tickets#expensive', as: 'expensive'
   get '/tickets/:id/buy', to: 'tickets#edit', as: 'buy_ticket'
+
+  #flights 
+  get '/airlines/:airline_id/flights/cheapest', to: 'flights#cheapest', as: 'cheapest_flight'
+  get '/airlines/:airline_id/flights/expensive', to: 'flights#expensive', as: 'expensive_flight'
 
   resources :airlines, only: [:index, :show] do 
    resources :flights, only: [:index, :show]

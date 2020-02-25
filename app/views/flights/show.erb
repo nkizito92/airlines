@@ -7,7 +7,7 @@
 </div>
 <div>
     <table>
-        <% @flight.tickets.each do |ticket| %>
+        <% @tickets.each do |ticket| %>
         <th>Ticket Number</th> <th>Price</th> <th>Seat</th> <th>Purchased</th>
         <tr>
             <td><%= ticket.ticket_num %></td>
@@ -23,5 +23,12 @@
         </tr>
         <% end %>
     </table>
-        <%= link_to ' create ticket', new_flight_ticket_path(@flight) %>
+
+        <%= link_to 'Create ticket', new_flight_ticket_path(@flight) %> <br>
+        <% if !@tickets[1].nil? %>
+            <%= link_to 'Cheapest ticket', cheapest_flight_path(@flight) %> <br>
+            <%= link_to 'Expensive ticket', expensive_flight_path(@flight) %> <br>
+        <% end %>
+        <%= link_to 'back to airlines', airlines_path %> <br>
+
 </div>

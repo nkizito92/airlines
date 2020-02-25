@@ -11,13 +11,11 @@ class TicketsController < ApplicationController
     end 
 
     def expensive 
-        @tickets = Ticket.order(price: :desc).first
-        render :index
+        ticket_order(:desc)
     end 
 
     def cheapest
-        @tickets = Ticket.order(price: :asc).first
-        render :index
+        ticket_order(:asc)
     end
 
     def new 
@@ -72,4 +70,9 @@ class TicketsController < ApplicationController
         # Tickets doesn't include flight in its attributes so :flight_id
         params.require(:ticket).permit(:ticket_num, :seat_num, :price, :flight_id)
     end 
+
+    def ticket_order(ordered)
+        @tickets = Ticket.order(price: ordered).first
+        render :index
+    end
 end
