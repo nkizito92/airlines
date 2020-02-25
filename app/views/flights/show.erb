@@ -7,21 +7,36 @@
 </div>
 <div>
     <table>
-        <% @tickets.each do |ticket| %>
         <th>Ticket Number</th> <th>Price</th> <th>Seat</th> <th>Purchased</th>
-        <tr>
-            <td><%= ticket.ticket_num %></td>
-            <td> <%= ticket.price %></td>
-            <td><%= ticket.seat_num %></td>
-            <td>  
-                <% if ticket.passenger.nil? %>
-                    <%= link_to 'Buy ticket', buy_ticket_path(ticket) %>
-                <% else %>
-                    purchased
-                <% end %>
-            </td>
-        </tr>
-        <% end %>
+            <% if !@tickets[1].nil? %>
+                    <% @tickets.each do |ticket| %>
+                        <tr>
+                            <td><%= ticket.ticket_num %></td>
+                            <td> $<%= ticket.price %></td>
+                            <td><%= ticket.seat_num %></td>
+                            <td>  
+                                <% if ticket.passenger.nil? %>
+                                    <%= link_to 'Buy ticket', buy_ticket_path(ticket) %>
+                                <% else %>
+                                    purchased
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
+            <% else %>
+                <tr>
+                    <td><%= @tickets.ticket_num %></td>
+                    <td> $<%= @tickets.price %></td>
+                    <td><%= @tickets.seat_num %></td>
+                    <td>  
+                        <% if @tickets.passenger.nil? %>
+                            <%= link_to 'Buy ticket', buy_ticket_path(@tickets) %>
+                        <% else %>
+                            purchased
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
     </table>
 
         <%= link_to 'Create ticket', new_flight_ticket_path(@flight) %> <br>
@@ -29,6 +44,6 @@
             <%= link_to 'Cheapest ticket', cheapest_flight_path(@flight) %> <br>
             <%= link_to 'Expensive ticket', expensive_flight_path(@flight) %> <br>
         <% end %>
+        <%= link_to 'Show all tickets', flight_path(@flight) %>
         <%= link_to 'back to airlines', airlines_path %> <br>
-
 </div>

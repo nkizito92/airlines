@@ -22,7 +22,7 @@ class FlightsController < ApplicationController
 
     def scope_date(prices)
         @flight = Flight.find_by_id(params[:airline_id])
-        @tickets = @flight.tickets.order(price: prices)
+        @tickets = @flight.tickets.order(price: prices).first
         render :show
     end
 

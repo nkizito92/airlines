@@ -11,7 +11,9 @@
 
 <h3>Price: $<%= @ticket.price %></h2>
 <% if @ticket.passenger.nil? %>
-    <%= link_to "Purchase Ticket", edit_ticket_path %>
+    <%= link_to "Purchase Ticket", buy_ticket_path %> <br>
 <% else %>
     <h3><%= @ticket.passenger.full_name %> owns this ticket.</h3>
 <% end %>
+<%= link_to 'Show all tickets', flight_path(@ticket.flight_id) %> <br> <br>
+<%= link_to 'back to airlines', airlines_path %> <br>
