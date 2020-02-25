@@ -1,4 +1,6 @@
 class PassengersController < ApplicationController
+    before_action :redirect_if_not_login
+    
     def index 
         @passengers = current_user.passengers
     end 

@@ -13,3 +13,130 @@
  *= require_tree .
  *= require_self
  */
+ * {
+     margin: 0;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+body {
+    background-color: #707070;
+}
+
+footer {
+    background-color: #005c40;
+     width: 100%;
+     position: relative;
+     padding: 20px 0; 
+     text-align: center;
+     color: white;
+}
+
+ main {
+    position: relative;
+    background-color: white;
+    width: 85%;
+    height: 800px;
+    padding: 0 20px;
+    margin:0 auto;
+    text-align: center;
+ }
+
+ nav {
+     background-color: #005c40;
+     width: 100%;
+     position: relative;
+     padding: 20px 0;
+ }
+
+ nav ul {
+     text-align: center;
+ }
+
+ nav ul li {
+     display: inline-block;
+ }
+ nav ul li:last-child {
+     position: absolute;
+     right: 0;
+ }
+
+ nav a {
+     color: white;
+     padding: 5px 8px;
+     text-decoration: none;
+ }
+ nav a:hover {
+     background-color: royalblue;
+     color: white;
+     padding: 5px 8px;
+     text-decoration: none;
+ }
+
+ main li {
+     margin: 10px;
+     list-style: none;
+ }
+
+ main a { 
+    border: 1px solid #0099ff;
+    border-radius: 8px;
+    color: #0099ff;
+    padding: 5px 10px;
+    margin: 5px, 0;
+    text-decoration: none;
+}
+main a:hover {
+    background-color:  #0099ff;
+    color: #ffff;
+    margin: 5px, 0;
+}
+main a:active {
+    border: 1px solid #005c40;
+    background-color:  #005c40;
+    color: #ffff;
+    margin: 5px, 0;
+ }
+ 
+ main table {
+    position: relative;
+    margin: 0 auto;
+ }
+
+ main table a{
+    border: none;
+    color: red;
+    padding: 0;
+ }
+ main table a:hover{
+    background: none;
+    color: #0099ff;
+ }
+ main table a:active{
+    border: none;
+    background: none;
+    color: #005c40;
+ }
+
+ main table td div {
+    font-weight: 700;
+    color: #00ac00;
+ }
+
+
+
+ /* Login */
+
+ #login_form {
+    position: relative;
+    margin:0 auto;
+    width: 60%;
+    padding-top: 20px;
+}
+
+ #login_form input {
+     border-radius: 4px;
+     padding: 3px;
+     box-shadow: none;
+     outline: none;
+     width: 55%;
+     margin-bottom: 5px;
+ }

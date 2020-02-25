@@ -18,7 +18,7 @@
                                 <% if ticket.passenger.nil? %>
                                     <%= link_to 'Buy ticket', buy_ticket_path(ticket) %>
                                 <% else %>
-                                    purchased
+                                    <div>Purchased</div>
                                 <% end %>
                             </td>
                         </tr>
@@ -32,18 +32,19 @@
                         <% if @tickets.passenger.nil? %>
                             <%= link_to 'Buy ticket', buy_ticket_path(@tickets) %>
                         <% else %>
-                            purchased
+                           <span>purchased</span> 
                         <% end %>
                     </td>
                 </tr>
             <% end %>
     </table>
-
-        <%= link_to 'Create ticket', new_flight_ticket_path(@flight) %> <br>
-        <% if !@tickets[1].nil? %>
-            <%= link_to 'Cheapest ticket', cheapest_flight_path(@flight) %> <br>
-            <%= link_to 'Expensive ticket', expensive_flight_path(@flight) %> <br>
-        <% end %>
-        <%= link_to 'Show all tickets', flight_path(@flight) %>
-        <%= link_to 'back to airlines', airlines_path %> <br>
+        <div>
+            <%= link_to 'Create ticket', new_flight_ticket_path(@flight) %> 
+            <% if !@tickets[1].nil? %>
+                <%= link_to 'Cheapest ticket', cheapest_flight_path(@flight) %> 
+                <%= link_to 'Expensive ticket', expensive_flight_path(@flight) %> 
+            <% end %>
+            <%= link_to 'Show all tickets', flight_path(@flight) %>
+            <%= link_to 'back to airlines', airlines_path %> <br>
+        </div>
 </div>

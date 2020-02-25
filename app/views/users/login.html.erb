@@ -1,11 +1,11 @@
-<%= form_tag '/login' do%>
-    <label>Username:</label><br>
-    <%= text_field_tag :username %><br>
-    <label>Password:</label><br>
-    <%= password_field_tag :password %> <br>
-    <%= submit_tag 'Login' %>
-<% end %>
+<div id="login_form">
+<h1>Login</h1> <br>
+    <%= form_tag '/login' do%>
+        <%= text_field_tag :username, nil, placeholder: 'Username' %><br>
+        <%= password_field_tag :password, nil, placeholder: 'Password'%> <br>
+        <%= submit_tag 'Login' %>
+    <% end %>
+</div>
 
-<%= link_to "Signup", signup_path %> <br> <br>
-<p>Or try <%= link_to 'Facebook Signin', '/auth/facebook'%>.</p>
-<p>Or try <%= link_to 'Gmail Signin', '/auth/google_oauth2'%>.</p>
+<%= link_to "Signup", signup_path %>
+<%= render 'form' %>

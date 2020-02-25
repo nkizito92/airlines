@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+    before_action :redirect_if_not_login
 
     before_action :sets_params, only: [:show, :edit, :destroy, :update]
 
@@ -56,6 +57,7 @@ class TicketsController < ApplicationController
         # remove ticket or cancel it
         @ticket.passenger_id = nil
         @ticket.save
+        redirect_to ticket_path(@ticket)
         # this part is only for admin
         # @ticket.delete_all
     end

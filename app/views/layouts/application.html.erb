@@ -2,13 +2,30 @@
 <html>
   <head>
     <title>Airlines</title>
-    
+     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
   <body>  
-    <% if logged_in? %>
-      <%= link_to "logout #{current_user.username}?", logout_path %>
-    <% end %>
+      <nav> 
+        <ul> 
+          <li><%= link_to 'Home', root_path %> <br></li>
+          <li><%= link_to 'Passenger', passengers_path %></li>
+          <li><%= link_to 'Tickets', tickets_path %></li>
+          <li><%= link_to 'Flights', "/airlines/#{air_flights}/flights" %></li>
+          <li>
+        <% if logged_in? %>
+          <%= link_to "Logout (#{current_user.username}?)", logout_path %>
+          <% else %>
+            <%= link_to "Signup", signup_path %>
+        <% end %>
+          </li>
+        </ul>
+      </nav>
+    <main>
     <%= yield %>
+    </main>
+    <footer>
+      <small>&copy; 2020 <strong>Airlines</strong> by Kizito Njoku</small>
+    </footer>
   </body>
 </html>

@@ -1,7 +1,14 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?
+    helper_method :current_user, :logged_in?, :air_flights
     
     private 
+
+    def air_flights
+        @flight = rand(Airline.all.count)
+        if @flight == 0 || @flight.nil?
+            @flight = rand(Airline.all.count)+1
+        end 
+    end 
 
     def logged_in?
         !!session[:user_id]
