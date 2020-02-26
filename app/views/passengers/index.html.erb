@@ -1,11 +1,7 @@
 <% if !@passengers.empty? %>
     <% @passengers.each do |passenger| %>
-        <h1><%= passenger.full_name %> </h1> 
-
-        <%= passenger.age %>
-
         <% if !passenger.tickets.empty? %>
-        <h2> <%= passenger.full_name %>'s Plane Tickets:</h2>
+        <h1> <%= passenger.full_name %>'s Plane Tickets:</h1> <br><br>
             <% passenger.tickets.each do |tic| %>
                 <%= tic.ticket_num %>
                 <%= tic.price %>

@@ -1,10 +1,10 @@
      <% if @ticket.flight.nil?  %>
           <h2> Ticket <%= @ticket.ticket_num %> has no Flight</h2>
      <% else %>
-        <div> Plane: <%= @ticket.flight.title %></div>
-        <div>Plane Departing <%= @ticket.flight.departure %></div>
-        <div>Plane Arriving <%= @ticket.flight.arrival %></div>
-        <h1>Ticket Number: <%= @ticket.ticket_num %></h1>
+        <h1> Plane: <%= @ticket.flight.title %></h1>
+        <div>Plane Departing: <%= @ticket.flight.departure %></div>
+        <div>Plane Arriving: <%= @ticket.flight.arrival %></div> <br><br>
+        <h3>Ticket Number: <%= @ticket.ticket_num %></h3>
      <% end %>
 
 <h2>Seat Number: <%= @ticket.seat_num %></h2>

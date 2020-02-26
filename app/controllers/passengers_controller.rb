@@ -1,17 +1,14 @@
 class PassengersController < ApplicationController
     before_action :redirect_if_not_login
-    
+    before_action :finds_passenger, only: [:show, :edit, :update, :destroy]
     def index 
         @passengers = current_user.passengers
     end 
 
     def show
-        # shows the flight the passenger chose through ticket
-        @passenger = Passenger.find_by_id(params[:id])
     end
 
     def new
-        # picking a flight
         @passenger = Passenger.new
     end
 
@@ -26,18 +23,14 @@ class PassengersController < ApplicationController
     end
 
     def edit
-        # edit the flight and choose a different one
-        @passenger = Passenger.find_by_id(params[:id])
     end
 
     def update
-        @passenger = Passenger.find_by_id(params[:id])
         @passenger.update(passenger_params)
-        # update flight
+        redirect_to passenger_path(@passenger)
     end
 
     def destroy
-        @passenger = Passenger.find_by_id(params[:id])
         if current_user.id == @passenger.user_id
             @passenger.delete_all
         end
@@ -52,6 +45,10 @@ private
         else 
             redirect_to passengers_path
         end 
+    end 
+
+    def finds_passenger 
+        @passenger = Passenger.find_by_id(params[:id])
     end 
 
     def passenger_params

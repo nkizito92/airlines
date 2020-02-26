@@ -1,6 +1,5 @@
 class TicketsController < ApplicationController
     before_action :redirect_if_not_login
-
     before_action :sets_params, only: [:show, :edit, :destroy, :update]
 
     def index 
@@ -8,7 +7,6 @@ class TicketsController < ApplicationController
     end 
 
     def show 
-        # show the ticket, with seat_num, flight, and passanger 
     end 
 
     def expensive 
@@ -25,8 +23,6 @@ class TicketsController < ApplicationController
     end 
 
     def create 
-        # I was getting unpermit for flight so params[:ticket][:flight][:title]
-        # @flight = Flight.find_by(title: params[:ticket][:flight][:title])
         @ticket = Ticket.new(params_pair)
         if @ticket.save
             redirect_to ticket_path(@ticket)
@@ -36,13 +32,10 @@ class TicketsController < ApplicationController
     end 
 
     def edit 
-        # choose different time for the same ticket
     end 
 
     def update 
-        # updates ticket
         @message = ""
-        @ticket = Ticket.find_by_id(params[:id])
         @ticket.update(passenger_id: params[:ticket][:passenger_id])         
         if @ticket.passenger.nil? 
             @message = "Please Choose a Passenger."
@@ -50,14 +43,13 @@ class TicketsController < ApplicationController
         elsif current_user.id != @ticket.passenger.user_id 
             redirect_to root_path
         else 
-            redirect_to root_path
+            redirect_to ticket_path(@ticket)
         end
     end
 
     def destroy
         # remove ticket or cancel it
         @ticket.passenger_id = nil
-        binding.pry
         @ticket.save
         redirect_to ticket_path(@ticket)
         # this part is only for admin
@@ -71,7 +63,6 @@ class TicketsController < ApplicationController
     end 
 
     def params_pair
-        # Tickets doesn't include flight in its attributes so :flight_id
         params.require(:ticket).permit(:ticket_num, :seat_num, :price, :flight_id)
     end 
 
