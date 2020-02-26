@@ -1,9 +1,9 @@
-<h1> Airlines</h1>
 <ul>
+<h1> Airlines</h1> <br><br>
 <% @airlines.each do |airline| %>
    <h3><%= airline.name %></h3>
-   <li><%= airline.address %> - <%= airline.destination %> </li>
-   <span> <%=link_to 'View Airline', airline_path(airline) %></span> <br>
-         <%= pluralize(airline.flights.count, 'flight') %> 
+   <li><%= airline.address %> - <%= airline.destination %> <%=link_to 'View Airline', airline_path(airline) %></li>
+        <div>This has <%= pluralize(airline.flights.count, 'flight') %></div> <br><br>
 <% end %>
 </ul>
+

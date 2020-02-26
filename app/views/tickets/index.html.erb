@@ -12,8 +12,8 @@
                 Price: $<%= ticket.price %>
             </li>
         <% end %>
-    <%= link_to 'Cheapest tickets', cheapest_path %>
-    <%= link_to 'Expensive tickets', expensive_path %>
+    <%= link_to 'Cheapest Ticket', cheapest_path %>
+    <%= link_to 'Expensive Ticket', expensive_path %>
     <% else %>
 
 
@@ -27,7 +27,7 @@
                 Seat Number: <%= @tickets.seat_num %> -
                 Price: $<%= @tickets.price %>
             </li>
-    <%= link_to 'tickets', tickets_path %>
+    <%= link_to 'See All Tickets', tickets_path %>
     <% end %>
 
 </ul>

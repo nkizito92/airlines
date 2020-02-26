@@ -9,11 +9,17 @@
 
 <h2>Seat Number: <%= @ticket.seat_num %></h2>
 
-<h3>Price: $<%= @ticket.price %></h2>
+<h3>Price: $<%= @ticket.price %></h2> <br><br>
 <% if @ticket.passenger.nil? %>
-    <%= link_to "Purchase Ticket", buy_ticket_path %> <br>
-<% else %>
+    <%= link_to "Purchase Ticket", buy_ticket_path %>
+<% elsif current_user.id == @ticket.passenger_id%>
     <h3><%= @ticket.passenger.full_name %> owns this ticket.</h3>
+    <div id="login_form">
+     <%= form_for @ticket, method: :delete do |f| %>
+        <%= f.submit 'cancel Passenger'%>
+    <% end %>
+    </div>
 <% end %>
-<%= link_to 'Show all tickets', flight_path(@ticket.flight_id) %> <br> <br>
-<%= link_to 'back to airlines', airlines_path %> <br>
+<div id="filters">
+<%= link_to 'Show all tickets', flight_path(@ticket.flight_id) %>
+</div>

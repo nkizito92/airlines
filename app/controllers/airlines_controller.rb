@@ -1,5 +1,5 @@
 class AirlinesController < ApplicationController
-    before_action :redirect_if_not_login, only: [:index, :show]
+    before_action :redirect_if_not_login
     def index 
         # displays airlines to choose from
         @airlines = Airline.all

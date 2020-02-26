@@ -26,7 +26,7 @@ Rails.application.routes.draw do
    resources :flights, only: [:index, :show]
 end
 resources :flights, only: [:show] do 
-  resources :tickets, only: [:new, :create]
+  resources :tickets, only: [:new, :create, :show]
 end
 resources :tickets, only: [:index, :show, :new, :create, :update, :destroy]
 

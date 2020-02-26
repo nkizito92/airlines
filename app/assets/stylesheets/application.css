@@ -140,3 +140,47 @@ main a:active {
      width: 55%;
      margin-bottom: 5px;
  }
+
+ #login_form input[name='commit'] {
+     background-color: #0099ff;
+     border-radius: 5px;
+     color: #fff;
+     border: 1px solid #0099ff ;
+ }
+ #login_form input[name='commit']:hover {
+     background-color: #ffffff;
+    
+     color: #0099ff;
+ }
+ #login_form input[name='commit']:active {
+     background-color: #005c40;
+     color: #fff;
+     border: 1px solid #005c40 ;
+ }
+
+ #login_form select {
+    border-radius: 4px;
+    padding: 3px;
+    box-shadow: none;
+    outline: none;
+    width: 55%;
+    margin-bottom: 5px;
+ }
+ 
+ #filters {
+     position: relative;
+     padding-top: 20px;
+ }
+
+
+ #error_explanation {
+     animation: fades 5s linear;
+     color: red;
+     opacity: 0;
+ }
+
+ @keyframes fades {
+    0%{opacity: 1;}
+    50%{opacity: 1;}
+    100%{opacity: 0;}
+ }

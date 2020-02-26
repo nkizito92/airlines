@@ -19,12 +19,13 @@
         </tr>
         <% end %>
     </table>
-     <%= link_to 'Create ticket', new_flight_ticket_path(flight) %> <br>
+
+    <div id="filters">
+     <%= link_to 'Create ticket', new_flight_ticket_path(flight) %>
         <% if !flight.tickets[1].nil? %>
-            <%= link_to 'Cheapest ticket', cheapest_flight_path(flight) %> <br>
-            <%= link_to 'Expensive ticket', expensive_flight_path(flight) %> <br>
+            <%= link_to 'Cheapest ticket', cheapest_flight_path(flight) %>
+            <%= link_to 'Expensive ticket', expensive_flight_path(flight) %>
         <% end %>
-</div>
+    </div>
+</div> <br><br>
 <% end %>
-        <%= link_to 'Show all tickets', airline_flights_path %>
-        <%= link_to 'back to airlines', airlines_path %> <br>

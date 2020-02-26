@@ -1,5 +1,4 @@
-<h1> <%= @flight.airline.name %></h1>
-<h1><%= @flight.title %></h1>
+<h1> <%= @flight.airline.name %> <%= @flight.title %></h1>
 <div>
     Departure: <%= @flight.departure %> <br>
     Arrival: <%= @flight.arrival %> <br>
@@ -16,7 +15,7 @@
                             <td><%= ticket.seat_num %></td>
                             <td>  
                                 <% if ticket.passenger.nil? %>
-                                    <%= link_to 'Buy ticket', buy_ticket_path(ticket) %>
+                                    <%= link_to 'Buy Ticket', buy_ticket_path(ticket) %>
                                 <% else %>
                                     <div>Purchased</div>
                                 <% end %>
@@ -30,7 +29,7 @@
                     <td><%= @tickets.seat_num %></td>
                     <td>  
                         <% if @tickets.passenger.nil? %>
-                            <%= link_to 'Buy ticket', buy_ticket_path(@tickets) %>
+                            <%= link_to 'Buy Ticket', buy_ticket_path(@tickets) %>
                         <% else %>
                            <span>purchased</span> 
                         <% end %>
@@ -38,13 +37,13 @@
                 </tr>
             <% end %>
     </table>
-        <div>
-            <%= link_to 'Create ticket', new_flight_ticket_path(@flight) %> 
+        <div id="filters">
+            <%= link_to 'Create Ticket', new_flight_ticket_path(@flight) %> 
             <% if !@tickets[1].nil? %>
-                <%= link_to 'Cheapest ticket', cheapest_flight_path(@flight) %> 
-                <%= link_to 'Expensive ticket', expensive_flight_path(@flight) %> 
+                <%= link_to 'Cheapest Ticket', cheapest_flight_path(@flight) %> 
+                <%= link_to 'Expensive Ticket', expensive_flight_path(@flight) %> 
+            <% else %>
+                <%= link_to 'Show all Tickets', flight_path(@flight) %>
             <% end %>
-            <%= link_to 'Show all tickets', flight_path(@flight) %>
-            <%= link_to 'back to airlines', airlines_path %> <br>
         </div>
 </div>

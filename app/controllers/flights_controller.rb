@@ -1,4 +1,5 @@
 class FlightsController < ApplicationController
+    before_action :redirect_if_not_login
     def index
         # shows a list of different flights
         @flights = Airline.find_by_id(params[:airline_id]).flights

@@ -17,5 +17,7 @@
         <% end %>
     <% end %>
 </div>
-
-<div style="color: red;"> <%= @message %> </div>
+<% if current_user.passengers.empty? %>
+    <div id="error_explanation"> You have no Passengers to select</div>
+<% end %>
+    <div id="error_explanation"> <%= @message %> </div>

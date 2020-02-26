@@ -1,10 +1,11 @@
+<div id="login_form">
+<h1>Signup</h1> <br>
 <%= form_for :user, class: "create" do |f| %>
-    <%= f.label :username %> <br>
-    <%= f.text_field :username %> <br>
-    <%= f.label :password %> <br>
-    <%= f.password_field :password %> <br>
-    <%= f.label :password_confirmation %> <br>
-    <%= f.password_field :password_confirmation %> <br />
+    <%= f.text_field :username, placeholder: "Username" %> 
+    <%= f.password_field :password, placeholder: "Password"%> 
+    <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
     <%= f.submit 'Signup' %>
+    <%= render 'errors' %>
 <% end %>
-<%= render 'form' %>
+</div>
+<%= render 'logins' %>

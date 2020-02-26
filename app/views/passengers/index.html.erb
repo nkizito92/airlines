@@ -1,20 +1,26 @@
-<% @passengers.each do |passenger| %>
-    <h1><%= passenger.full_name %> </h1> 
+<% if !@passengers.empty? %>
+    <% @passengers.each do |passenger| %>
+        <h1><%= passenger.full_name %> </h1> 
 
-    <%= passenger.age %>
+        <%= passenger.age %>
 
-    <% if !passenger.tickets.empty? %>
-    <h2> <%= passenger.full_name %>'s Plane Tickets:</h2>
-        <% passenger.tickets.each do |tic| %>
-            <%= tic.ticket_num %>
-            <%= tic.price %>
-            <%= tic.seat_num %>
+        <% if !passenger.tickets.empty? %>
+        <h2> <%= passenger.full_name %>'s Plane Tickets:</h2>
+            <% passenger.tickets.each do |tic| %>
+                <%= tic.ticket_num %>
+                <%= tic.price %>
+                <%= tic.seat_num %>
+            <% end %>
+        <%else %>
+            <h2> <%= passenger.full_name %> has no Plane tickets:</h2>
         <% end %>
-    <%else %>
-        <h2> <%= passenger.full_name %> has no Plane tickets:</h2>
-    <% end %>
-        <%= link_to "Edit Passenger", edit_passenger_path(passenger) %>
+            <%= link_to "Edit Passenger", edit_passenger_path(passenger) %>
 
+    <% end %>
+
+<% else %>
+    <h2>You Have No Passengers</h2> <br><br>
+     <%= link_to "Create Passenger", new_passenger_path %>
 <% end %>
 
 <%= link_to "View Airlines", root_path %>

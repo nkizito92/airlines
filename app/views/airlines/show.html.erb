@@ -6,15 +6,18 @@
 <% @airline.flights.each do |flight| %>
   <li>
   <h2><%= flight.title.capitalize %> - Departure: <%= flight.departure %> - Arrival: <%= flight.arrival %> </h2> <br><br>
-    <%= link_to 'view flight', airline_flight_path(@airline, flight.id) %><br> <br>
+    <h3> Your destination: <%= @airline.destination %></h3> <br>
+
+    <%= link_to 'View Flight', airline_flight_path(@airline, flight.id) %><br> <br>
     <% if !flight.tickets.empty? %>
-      <h1> Tickets: </h1>  
+      <h1> Tickets </h1>  
         <table border="1" > 
+            <th> Ticket Number </th> <th>Seat Number</th> <th>Price</th>
           <% flight.tickets.each  do |ticket| %>
-            <th> Ticket Number </th> <th>Seat Number</th>
             <tr align="center">
               <td><%= link_to ticket.ticket_num, ticket_path(ticket) %> </td>
               <td><%= ticket.seat_num %></td>
+              <td>$<%= ticket.price %></td>
             </tr>
           <% end %>
         </table> <br><br>
@@ -23,5 +26,3 @@
 <% end %>
 </ul>
 
-<h3> Your destination</h3>
-<%= @airline.destination %>

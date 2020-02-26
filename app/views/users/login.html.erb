@@ -5,7 +5,6 @@
         <%= password_field_tag :password, nil, placeholder: 'Password'%> <br>
         <%= submit_tag 'Login' %>
     <% end %>
+    <div id="error_explanation"> <%= @invalid %></div>
 </div>
-
-<%= link_to "Signup", signup_path %>
-<%= render 'form' %>
+<%= render 'logins' %>

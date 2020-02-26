@@ -12,12 +12,14 @@ class UsersController < ApplicationController
     end 
 
     def loggedin
+        @invalid = ""
         @user = User.find_by(username: params[:username])
        if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             create_passenger_if_none_redirect
-       else 
-            redirect_to login_path, alert: "Invalid login"
+        else 
+            @invalid = "Invalid Username or Password!"
+            render :login
        end
     end
     
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        return redirect_to signup_path unless @user.save
+        return render :new unless @user.save
         session[:user_id] = @user.id 
         create_passenger_if_none_redirect
     end
@@ -38,8 +40,6 @@ class UsersController < ApplicationController
     end
 
     private 
-
-   
 
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation)
