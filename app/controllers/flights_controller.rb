@@ -12,20 +12,15 @@ class FlightsController < ApplicationController
     end 
 
     def expensive 
-        scope_date(:desc)
+        @flight = Flight.find_by_id(params[:airline_id])
+        @tickets = Ticket.expensive.first
+        render :show
     end 
 
     def cheapest
-        scope_date(:asc)
-    end
-
-    private 
-
-    def scope_date(prices)
         @flight = Flight.find_by_id(params[:airline_id])
-        @tickets = @flight.tickets.order(price: prices).first
+        @tickets = Ticket.cheapest.first
         render :show
     end
-
     
 end

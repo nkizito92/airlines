@@ -10,11 +10,13 @@ class TicketsController < ApplicationController
     end 
 
     def expensive 
-        ticket_order(:desc)
+        @tickets = Ticket.expensive.first
+        render :index
     end 
 
     def cheapest
-        ticket_order(:asc)
+        @tickets = Ticket.cheapest.first
+        render :index
     end
 
     def new 
@@ -66,8 +68,8 @@ class TicketsController < ApplicationController
         params.require(:ticket).permit(:ticket_num, :seat_num, :price, :flight_id)
     end 
 
-    def ticket_order(ordered)
-        @tickets = Ticket.order(price: ordered).first
-        render :index
-    end
+    # def ticket_order(.ordered)
+    #     @tickets = Ticket.order(price: ordered).first
+    #     render :index
+    # end
 end
