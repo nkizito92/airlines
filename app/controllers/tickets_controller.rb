@@ -21,7 +21,6 @@ class TicketsController < ApplicationController
 
     def new 
         # buy a ticket with that has a specific time 
-        @tickets_flight = Flight.find_by_id(params[:flight_id])
         @ticket = Ticket.new(flight_id: params[:flight_id])
     end 
 
@@ -30,7 +29,7 @@ class TicketsController < ApplicationController
         # @flight = Flight.find_by(title: params[:ticket][:flight][:title])
         @ticket = Ticket.new(params_pair)
         if @ticket.save
-        redirect_to ticket_path(@ticket)
+            redirect_to ticket_path(@ticket)
         else 
             render :new
         end
@@ -38,24 +37,27 @@ class TicketsController < ApplicationController
 
     def edit 
         # choose different time for the same ticket
-        @ticket = Ticket.find_by_id(params[:id])
     end 
 
     def update 
         # updates ticket
+        @message = ""
         @ticket = Ticket.find_by_id(params[:id])
+        @ticket.update(passenger_id: params[:ticket][:passenger_id])         
         if @ticket.passenger.nil? 
-            @ticket.update(passenger_id: params[:ticket][:passenger_id])
-            @ticket.save
-            redirect_to root_path
+            @message = "Please Choose a Passenger."
+           render :edit
         elsif current_user.id != @ticket.passenger.user_id 
-            redirect_to airlines_path
+            redirect_to root_path
+        else 
+            redirect_to root_path
         end
     end
 
     def destroy
         # remove ticket or cancel it
         @ticket.passenger_id = nil
+        binding.pry
         @ticket.save
         redirect_to ticket_path(@ticket)
         # this part is only for admin
