@@ -5,7 +5,8 @@
 <ul>
 <% @airline.flights.each do |flight| %>
   <li>
-  <h2><%= flight.title.capitalize %> - Departure: <%= flight.departure %> - Arrival: <%= flight.arrival %> </h2> <br><br>
+  <h2><%= flight.title %> - Departure: <%= flight.departure %> - Arrival: <%= flight.arrival %> </h2> <br>
+    <h3>  <%= pluralize(flight.passengers.size, 'passenger') %> booked</h3> <br><br>
     <h3> Your destination: <%= @airline.destination %></h3> <br>
 
     <%= link_to 'View Flight', airline_flight_path(@airline, flight.id) %><br> <br>

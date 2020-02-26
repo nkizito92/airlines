@@ -95,6 +95,20 @@ main a:active {
     color: #ffff;
     margin: 5px, 0;
  }
+
+ main a[href="/auth/google_oauth2"] {
+     border: 1px #ff0000 solid;
+     color: #ff0000;
+    }
+main a[href="/auth/google_oauth2"]:hover {
+    background-color: #ff0000;
+    color: #ffff;
+}
+
+main a[href="/auth/google_oauth2"]:active {
+    background: linear-gradient(50deg,red, white);
+    color: #ffff;
+}
  
  main table {
     position: relative;
@@ -132,7 +146,8 @@ main a:active {
     padding-top: 20px;
 }
 
- #login_form input {
+ #login_form input,
+ #login_form select {
      border-radius: 4px;
      padding: 3px;
      box-shadow: none;
@@ -158,13 +173,9 @@ main a:active {
      border: 1px solid #005c40 ;
  }
 
- #login_form select {
-    border-radius: 4px;
-    padding: 3px;
-    box-shadow: none;
-    outline: none;
-    width: 55%;
-    margin-bottom: 5px;
+ .field_with_errors input,
+ .field_with_errors select {
+     border: 2px red solid;
  }
  
  #filters {
@@ -174,13 +185,13 @@ main a:active {
 
 
  #error_explanation {
-     animation: fades 5s linear;
+     animation: fades 6s linear;
      color: red;
      opacity: 0;
  }
 
  @keyframes fades {
     0%{opacity: 1;}
-    50%{opacity: 1;}
+    70%{opacity: 1;}
     100%{opacity: 0;}
  }

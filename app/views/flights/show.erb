@@ -1,9 +1,10 @@
-<h1> <%= @flight.airline.name %> <%= @flight.title %></h1>
+<h1> <%= @flight.airline.name %> <%= @flight.title %></h1> <br>
+<h3>  <%= pluralize(@flight.passengers.size, 'passenger') %> booked</h3> <br>
 <div>
     Departure: <%= @flight.departure %> <br>
     Arrival: <%= @flight.arrival %> <br>
     Destination: <%= @flight.airline.destination %>
-</div>
+</div> <br>
 <div>
     <table>
         <th>Ticket Number</th> <th>Price</th> <th>Seat</th> <th>Purchased</th>

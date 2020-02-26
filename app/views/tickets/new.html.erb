@@ -1,18 +1,20 @@
 <%# This is only for Admin %>
-<% if !@ticket.flight.nil? %>
-    <h2> New Ticket for: <%= @ticket.flight.title %> </h2>
-<% end %>
 <div id="login_form">
+<% if !@ticket.flight.nil? %>
+    <h1> New Ticket for: <%= @ticket.flight.title %> </h1> <br>
+<% else %>
+     <h1> New Ticket </h1> <br>
+<% end %>
 <%= form_for @ticket do |f| %>
     <%= f.text_field :ticket_num, placeholder: 'Ticket Number'%> <br>
     <%# Some seat will be taken %>
     <%= f.number_field :seat_num , placeholder: 'Seat Number'%><br> <br>
         <% if @ticket.flight.nil? %>
-            <%= f.collection_select(:flight_id, Flight.all, :id, :title, {prompt: "Choose Flight"}) %> <br> <br>
+            <%= f.collection_select(:flight_id, Flight.all, :id, :title, {prompt: "Choose Flight"}) %> <br>
         <% else %>
            <%= f.hidden_field :flight_id %> 
         <% end %>
-    <%= f.number_field :price, placeholder: 'Price'%> <br>
+    <%= f.number_field :price, value: 0, step: :any, placeholder: 'Price'%> <br>
     <%= f.submit %>
          <%= render 'errors' %>
 <% end %>
