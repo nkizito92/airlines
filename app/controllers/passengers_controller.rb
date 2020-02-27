@@ -6,6 +6,7 @@ class PassengersController < ApplicationController
     end 
 
     def show
+        redirect_if_wrong_id(@passenger, passengers_path)
     end
 
     def new
@@ -23,6 +24,7 @@ class PassengersController < ApplicationController
     end
 
     def edit
+        redirect_if_wrong_id(@passenger, passengers_path)
     end
 
     def update

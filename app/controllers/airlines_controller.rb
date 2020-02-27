@@ -6,5 +6,6 @@ class AirlinesController < ApplicationController
 
     def show 
         @airline = Airline.find_by_id(params[:id])
+        redirect_if_wrong_id(@airline, root_path)
     end
 end

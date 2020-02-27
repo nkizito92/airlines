@@ -40,11 +40,12 @@
     </table>
         <div id="filters">
             <%= link_to 'Create Ticket', new_flight_ticket_path(@flight) %> 
+                <%= link_to 'Show All Tickets', flights_path %>
             <% if !@tickets[1].nil? %>
                 <%= link_to 'Cheapest Ticket', cheapest_flight_path(@flight) %> 
                 <%= link_to 'Expensive Ticket', expensive_flight_path(@flight) %> 
             <% else %>
-                <%= link_to 'Show all Tickets', flight_path(@flight) %>
+                <%= link_to "Show Flight's Tickets", flight_path(@flight) %>
             <% end %>
         </div>
 </div>

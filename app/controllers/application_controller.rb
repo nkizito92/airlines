@@ -33,4 +33,10 @@ class ApplicationController < ActionController::Base
             redirect_to root_path
         end
     end
+
+    def redirect_if_wrong_id(object, redirection)
+        if object.nil?
+            redirect_to redirection
+        end
+    end 
 end

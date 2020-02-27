@@ -28,6 +28,8 @@ end
 resources :flights, only: [:show] do 
   resources :tickets, only: [:new, :create, :show]
 end
+
+resources :flights, only: [:index, :show]
 resources :tickets, only: [:index, :show, :new, :create, :update, :destroy]
 
 resources :passengers, only: [:index, :show, :new, :create, :edit, :update, :destroy]

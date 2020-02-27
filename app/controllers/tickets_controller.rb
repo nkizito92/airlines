@@ -7,6 +7,7 @@ class TicketsController < ApplicationController
     end 
 
     def show 
+        redirect_if_wrong_id(@ticket, tickets_path)
     end 
 
     def expensive 
@@ -34,6 +35,7 @@ class TicketsController < ApplicationController
     end 
 
     def edit 
+        redirect_if_wrong_id(@ticket, tickets_path)
     end 
 
     def update 

@@ -2,13 +2,21 @@ class FlightsController < ApplicationController
     before_action :redirect_if_not_login
     def index
         # shows a list of different flights
-        @flights = Airline.find_by_id(params[:airline_id]).flights
+        if !params[:airline_id].nil?
+         @flights = Airline.find_by_id(params[:airline_id]).flights
+        else
+            @flights = Flight.all
+        end
     end 
 
     def show
         #  shows the times of flight
         @flight = Flight.find_by_id(params[:id])
-        @tickets = @flight.tickets
+        if !@flight.nil?
+            @tickets = @flight.tickets
+        elsif !params[:airline_id].nil? 
+            redirect_to root_path
+        end
     end 
 
     def expensive 
