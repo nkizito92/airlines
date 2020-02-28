@@ -1,5 +1,4 @@
 <ul>
-<% if !@tickets[1].nil? %>
         <% @tickets.each do |ticket| %>
             <% if ticket.flight.nil? %>
             <h2> Ticket <%= ticket.ticket_num %> has no Flight</h2>
@@ -15,20 +14,5 @@
     <%= link_to 'Cheapest Ticket', cheapest_path %>
     <%= link_to 'Expensive Ticket', expensive_path %>
     <%= link_to 'Create Ticket', new_ticket_path %>
-    <% else %>
-
-
-        <% if @tickets.flight.nil? %>
-            <h2> Ticket <%= @tickets.ticket_num %> has no Flight</h2>
-        <% else %>
-        <h3>Plane: <%= @tickets.flight.title %></h3>
-        <% end %>
-            <li>
-                Ticket Number: <%= @tickets.ticket_num %> -
-                Seat Number: <%= @tickets.seat_num %> -
-                Price: $<%= @tickets.price %>
-            </li>
-    <%= link_to 'See All Tickets', tickets_path %>
-    <% end %>
 
 </ul>

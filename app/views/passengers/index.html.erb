@@ -1,7 +1,7 @@
 <% if !@passengers.empty? %>
     <% @passengers.each do |passenger| %>
         <% if !passenger.tickets.empty? %>
-        <h1> <%= passenger.full_name %>'s Plane Tickets:</h1> <br><br>
+        <h1> <%= passenger.full_name %> has <%= pluralize(passenger.tickets.size,'Ticket') %>:</h1> <br><br>
             <% passenger.tickets.each do |tic| %>
                <div>
                 <h2><%= tic.flight.title %></h2> <br>

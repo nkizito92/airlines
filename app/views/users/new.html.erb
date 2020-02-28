@@ -5,7 +5,20 @@
     <%= f.password_field :password, placeholder: "Password"%> 
     <%= f.password_field :password_confirmation, placeholder: "Password Confirmation" %>
     <%= f.submit 'Signup' %>
-    <%= render 'errors' %>
 <% end %>
 </div>
+
+        <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+            <%= pluralize(@user.errors.count, "error") %>
+            prohibited this account from being saved:
+            </h2>
+            <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </div>
+        <% end %> 
 <%= render 'logins' %>

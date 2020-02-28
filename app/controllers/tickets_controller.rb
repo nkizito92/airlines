@@ -11,13 +11,13 @@ class TicketsController < ApplicationController
     end 
 
     def expensive 
-        @tickets = Ticket.expensive.first
-        render :index
+        @ticket = Ticket.expensive.first
+        render :show
     end 
 
     def cheapest
-        @tickets = Ticket.cheapest.first
-        render :index
+        @ticket = Ticket.cheapest.first
+        render :show
     end
 
     def new 

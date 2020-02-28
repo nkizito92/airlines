@@ -11,7 +11,7 @@
 
 <h3>Price: $<%= @ticket.price %></h2> <br><br>
 <% if @ticket.passenger.nil? %>
-    <%= link_to "Purchase Ticket", buy_ticket_path %>
+    <%= link_to "Purchase Ticket", buy_ticket_path(@ticket) %>
 <% elsif current_user.id == @ticket.passenger_id%>
     <h3><%= @ticket.passenger.full_name %> owns this ticket.</h3>
     <div id="login_form">
@@ -21,5 +21,10 @@
     </div>
 <% end %>
 <div id="filters">
-<%= link_to 'Show all tickets', flight_path(@ticket.flight_id) %>
+
+<% if !@ticket.flight_id.nil? %>
+    <%= link_to 'Show all tickets', flight_path(@ticket.flight_id) %>
+<% else %>
+    <%= link_to 'Show all tickets', tickets_path %>
+<% end %>
 </div>
