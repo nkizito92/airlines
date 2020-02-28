@@ -8,7 +8,7 @@
 <div>
     <table>
         <th>Ticket Number</th> <th>Price</th> <th>Seat</th> <th>Purchased</th>
-            <% if !@tickets[1].nil? %>
+            <% if !@flight.tickets[1].nil? %>
                     <% @flight.tickets.each do |ticket| %>
                         <tr>
                             <td><%= ticket.ticket_num %></td>
@@ -41,7 +41,7 @@
         <div id="filters">
             <%= link_to 'Create Ticket', new_flight_ticket_path(@flight) %> 
                 <%= link_to 'Show All Tickets', flights_path %>
-            <% if !@tickets[1].nil? %>
+            <% if !@flight.tickets[1].nil? %>
                 <%= link_to 'Cheapest Ticket', cheapest_flight_path(@flight) %> 
                 <%= link_to 'Expensive Ticket', expensive_flight_path(@flight) %> 
             <% else %>

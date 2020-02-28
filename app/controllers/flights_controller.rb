@@ -21,13 +21,13 @@ class FlightsController < ApplicationController
 
     def expensive 
         @flight = Flight.find_by_id(params[:airline_id])
-        @tickets = Ticket.expensive.limit(3)
+        @flight.tickets = Ticket.expensive.limit(3)
         render :show
     end 
 
     def cheapest
         @flight = Flight.find_by_id(params[:airline_id])
-        @tickets = Ticket.cheapest.limit(3)
+        @flight.tickets = Ticket.cheapest.limit(3)
         render :show
     end
     
