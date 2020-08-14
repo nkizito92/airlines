@@ -3,7 +3,13 @@ class TicketsController < ApplicationController
     before_action :sets_params, only: [:show, :edit, :destroy, :update]
 
     def index 
-        @tickets = Ticket.all
+        if !params[:flight_id].nil?
+            #find the flight
+            #get the tickets aso
+            @tickets = Flight.find_by_id(params[:flight_id]).tickets
+        else 
+             @tickets = Ticket.all
+        end
     end 
 
     def show 
@@ -18,6 +24,11 @@ class TicketsController < ApplicationController
     def cheapest
         @ticket = Ticket.cheapest.first
         render :show
+    end
+
+    def expensive_tickets
+        @tickets = Ticket.expensive_tickets
+        render :index
     end
 
     def new 
