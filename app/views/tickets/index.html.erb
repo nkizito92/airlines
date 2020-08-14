@@ -1,3 +1,4 @@
+<% if !@tickets.empty? %>
 <ul>
         <% @tickets.each do |ticket| %>
             <% if ticket.flight.nil? %>
@@ -14,5 +15,7 @@
     <%= link_to 'Cheapest Ticket', cheapest_path %>
     <%= link_to 'Expensive Ticket', expensive_path %>
     <%= link_to 'Create Ticket', new_ticket_path %>
-
 </ul>
+    <% else %>
+    <h2>Tickets are sold Out!!</h2>
+    <% end %>
