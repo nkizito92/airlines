@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/tickets/cheapest', to: 'tickets#cheapest', as: 'cheapest'
   get '/tickets/expensive', to: 'tickets#expensive', as: 'expensive'
   get '/tickets/:id/buy', to: 'tickets#edit', as: 'buy_ticket'
-
+  get '/expensive_tickets', to: 'tickets#expensive_tickets', as: 'expensive_tickets'
   #flights 
   get '/airlines/:airline_id/flights/cheapest', to: 'flights#cheapest', as: 'cheapest_flight'
   get '/airlines/:airline_id/flights/expensive', to: 'flights#expensive', as: 'expensive_flight'
@@ -26,10 +26,10 @@ Rails.application.routes.draw do
    resources :flights, only: [:index, :show]
 end
 resources :flights, only: [:show] do 
-  resources :tickets, only: [:new, :create, :show]
+  resources :tickets, only: [:index, :new, :create, :show]
 end
 
-resources :flights, only: [:index, :show]
+resources :flights, only: [:index, :show] 
 resources :tickets, only: [:index, :show, :new, :create, :update, :destroy]
 
 resources :passengers, only: [:index, :show, :new, :create, :edit, :update, :destroy]
